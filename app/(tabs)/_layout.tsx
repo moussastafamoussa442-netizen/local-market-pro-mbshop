@@ -1,8 +1,10 @@
+
 import React from 'react';
 import { Platform } from 'react-native';
 import { NativeTabs, Icon, Label } from 'expo-router/unstable-native-tabs';
 import { Stack } from 'expo-router';
 import FloatingTabBar, { TabBarItem } from '@/components/FloatingTabBar';
+import { colors } from '@/styles/commonStyles';
 
 export default function TabLayout() {
   // Define the tabs configuration
@@ -11,13 +13,25 @@ export default function TabLayout() {
       name: '(home)',
       route: '/(tabs)/(home)/',
       icon: 'house.fill',
-      label: 'Home',
+      label: 'Accueil',
+    },
+    {
+      name: 'inventory',
+      route: '/(tabs)/inventory',
+      icon: 'cube.box.fill',
+      label: 'Inventaire',
+    },
+    {
+      name: 'sales',
+      route: '/(tabs)/sales',
+      icon: 'cart.fill',
+      label: 'Ventes',
     },
     {
       name: 'profile',
       route: '/(tabs)/profile',
       icon: 'person.fill',
-      label: 'Profile',
+      label: 'Profil',
     },
   ];
 
@@ -27,11 +41,19 @@ export default function TabLayout() {
       <NativeTabs>
         <NativeTabs.Trigger name="(home)">
           <Icon sf="house.fill" drawable="ic_home" />
-          <Label>Home</Label>
+          <Label>Accueil</Label>
+        </NativeTabs.Trigger>
+        <NativeTabs.Trigger name="inventory">
+          <Icon sf="cube.box.fill" drawable="ic_inventory" />
+          <Label>Inventaire</Label>
+        </NativeTabs.Trigger>
+        <NativeTabs.Trigger name="sales">
+          <Icon sf="cart.fill" drawable="ic_sales" />
+          <Label>Ventes</Label>
         </NativeTabs.Trigger>
         <NativeTabs.Trigger name="profile">
           <Icon sf="person.fill" drawable="ic_profile" />
-          <Label>Profile</Label>
+          <Label>Profil</Label>
         </NativeTabs.Trigger>
       </NativeTabs>
     );
@@ -47,6 +69,8 @@ export default function TabLayout() {
         }}
       >
         <Stack.Screen name="(home)" />
+        <Stack.Screen name="inventory" />
+        <Stack.Screen name="sales" />
         <Stack.Screen name="profile" />
       </Stack>
       <FloatingTabBar tabs={tabs} />
